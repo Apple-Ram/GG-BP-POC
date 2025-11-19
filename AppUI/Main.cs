@@ -498,11 +498,9 @@ namespace Pomme
             tp.Privileges = new PRIVILEGE[1];
             tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
 
-            // On cherche l'ID
             bool resLookup = LookupPrivilegeValue(null, "SeDebugPrivilege", out tp.Privileges[0].Luid);
             if (resLookup == true)
             {
-                // On active
                 AdjustTokenPrivileges(hToken, false, ref tp, 0, IntPtr.Zero, IntPtr.Zero);
             }
 
